@@ -84,26 +84,4 @@
     // return view('post', ['post'=> $post]);
 
 
-Route::get('/welcome', function ()
-{
-	echo "<a href='" .route('bye'). "'> Bye Link </a>";
-})->name('welcome');
-
-Route::get('/bye', function ()
-{
-	echo "<a href='" . route('welcome') . "'> Welcome Link </a>";
-	$countries = ['12345' =>'Pakistan', '67890' =>'India', '24680' =>'Chine'];
-	echo "<ul>";
-		foreach ($countries as $population => $country)
-		{
-			echo "<li> <a href='". route('about.country', ['country' => $country, 'population' => $population]). "'> $country </a> </li>";
-		}
-	echo "</ul>";
-})->name('bye');
-
-Route::get('/about/{country?}', function ($country)
-{
-	return "Welcome to {$country}, Our Population is: " . request('population');
-})->name('about.country');
-
 Route::resource('products', ProductController::class);
